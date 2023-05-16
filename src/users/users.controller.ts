@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Controller, Post, Body, Get, Put, Delete,Param} from '@nestjs/common';
 import { UsersService } from './users.service';
-import { User } from './user.entity/user.entity';
+import { user } from './users.service';
 
 @Controller('users')
 export class UsersController {
@@ -10,16 +10,16 @@ export class UsersController {
 
     @Get(':id')
     get(@Param() params) {
-        return this.service.getUser(params.id);
+        return this.service.getUsers(params.id);
     }
 
     @Post()
-    create(@Body() user: User) {
+    create(@Body() user: user) {
         return this.service.createUser(user);
     }
 
     @Put()
-    update(@Body() user: User) {
+    update(@Body() user: user) {
         return this.service.updateUser(user);
     }
 

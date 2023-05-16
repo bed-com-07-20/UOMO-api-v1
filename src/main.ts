@@ -2,6 +2,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -9,10 +10,16 @@ async function bootstrap() {
   .setTitle(' Ordering Food Online')
   .setDescription('UOMO API')
   .setVersion('1.0')
-  .addTag('its all about Food')
+  .addTag('Done by Mayamiko')
   .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
+
+  app.use(cookieParser());
+  app.enableCors({
+    origin: 'http//localhost:3000',
+    credentials: true
+  })
   await app.listen(3000);
 }
 bootstrap();

@@ -1,8 +1,9 @@
 /* eslint-disable prettier/prettier */
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+/*import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class User {
+    [x: string]: string;
 
     @PrimaryGeneratedColumn()
     id: number;
@@ -16,3 +17,4 @@ export class User {
     @Column() 
     isActive:boolean;
 }
+*/
