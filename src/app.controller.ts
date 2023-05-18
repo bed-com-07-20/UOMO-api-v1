@@ -1,7 +1,5 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable prettier/prettier */
-/* eslint-disable prettier/prettier */
-import { BadRequestException, Body, Controller, Headers, Post, Get, Req, Res, UnauthorizedException } from '@nestjs/common';
+
+import { BadRequestException, Body, Controller, Delete, Headers, Post, Put, Get, Req, Res, Param, UnauthorizedException } from '@nestjs/common';
 //import { UserService } from './app.service';
 //import {Body, Controller, Post} from '@nestjs/common';
 import {AppService} from './app.service';
@@ -9,9 +7,9 @@ import * as bcrypt from 'bcrypt';
 import { ApiBadRequestResponse } from '@nestjs/swagger';
 import { JwtService } from '@nestjs/jwt';
 import {Response, Request} from 'express';
-
 import { get, request } from 'http';
 import path from 'path';
+import { users } from './app.entity';
 
 //import {Path} from 'path';
 
@@ -47,7 +45,7 @@ export class AppController {
      return user;
  }
 
- @Post('login')
+ @Post('id/login')
  async login(
   @Body('email') email: string,
   @Body('password') password: string,
@@ -74,7 +72,7 @@ export class AppController {
 
        //return user;
  }
-      @Get('user')
+      @Get(':id/user/photo')
 
      async user(@Req() request: Request){
       try{
@@ -95,8 +93,28 @@ export class AppController {
         throw new UnauthorizedException();
       }
      }
+
+     @Delete(':id/photo')
+     deleteUser(@Param() params) {
+         return this.service.deleteUser(params.id);
+     }
+
+     @Get(':id')
+    get(@Param() params) {
+        return this.service.getUsers(params.id);
+    }
+
+    @Post(':id/photo')
+    create(@Body() user: users) {
+        return this.service.createUser(user);
+    }
+
+    @Put()
+    update(@Body() user: users) {
+        return this.service.updateUser(user);
+    }
      
-     @Post('logout')
+     @Post(':id/logout')
 async logout(@Res({ passthrough: true }) response: Response) {
   response.clearCookie('jwt');
 

@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier */
+
 /*import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -20,7 +20,7 @@ import { AppService } from './app.service';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { user } from './user.entity';
 import { JwtModule } from '@nestjs/jwt';
-//import { user } from './user.entity';
+
 @Module({
   imports: [TypeOrmModule.forFeature([user]),
     TypeOrmModule.forRoot({
