@@ -10,7 +10,7 @@ import { user } from './user.entity';
     TypeOrmModule.forFeature([user]),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'http://sql9.freesqldatabase.com',
+      host: 'sql9.freesqldatabase.com',
       port: 3306,
       username: 'sql9624879',
       password: 'sQsMUyeSUv',
